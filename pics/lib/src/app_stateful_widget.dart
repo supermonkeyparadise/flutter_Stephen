@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 
 // 只 import get function，不全部載入
 import 'package:http/http.dart' show get;
+import 'dart:convert';
+
+// 相對於目前檔案的路徑
+import 'models/image_model.dart';
 
 // widget class
 class App extends StatefulWidget {
@@ -15,9 +19,11 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   int counter = 0;
 
-  void fetchImage() {
+  void fetchImage() async {
     counter++;
-    get('https://jsonplaceholder.typicode.com/photos/$counter');
+    var response =
+        await get('https://jsonplaceholder.typicode.com/photos/$counter');
+    var imageModel = ImageModel.fromJson(json.decode(response.body));
   }
 
   // Must define a 'build' method that returns
