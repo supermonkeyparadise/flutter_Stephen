@@ -7,6 +7,7 @@ import 'dart:convert';
 
 // 相對於目前檔案的路徑
 import 'models/image_model.dart';
+import 'widgets/imag_list.dart';
 
 // widget class
 class App extends StatefulWidget {
@@ -22,10 +23,11 @@ class AppState extends State<App> {
 
   void fetchImage() async {
     counter++;
-    var response =
+    final response =
         await get('https://jsonplaceholder.typicode.com/photos/$counter');
-    var imageModel = ImageModel.fromJson(json.decode(response.body));
+    final imageModel = ImageModel.fromJson(json.decode(response.body));
 
+    // 重繪
     setState(() {
       images.add(imageModel);
     });
@@ -36,7 +38,7 @@ class AppState extends State<App> {
   Widget build(context) {
     return MaterialApp(
       home: Scaffold(
-        body: Text('$counter'),
+        body: ImageList(images),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           // onPressed: () {
