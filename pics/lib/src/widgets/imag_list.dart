@@ -9,7 +9,11 @@ class ImageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
+    return ListView.builder(
+      itemCount: images.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Image.network(images[index].url);
+      },
+    );
   }
 }
