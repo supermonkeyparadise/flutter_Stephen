@@ -30,7 +30,7 @@ class ImageList extends StatelessWidget {
             child: Image.network(image.url),
             padding: EdgeInsets.only(bottom: 8.0),
           ),
-          Text(image.title)
+          Text(image.title),
         ],
       ),
     );
