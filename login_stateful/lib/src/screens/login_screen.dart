@@ -44,6 +44,9 @@ class LoginScreenState extends State<LoginScreen> {
           return null;
         }
       },
+      onSaved: (String value) {
+        print(value);
+      },
     );
   }
 
@@ -61,6 +64,9 @@ class LoginScreenState extends State<LoginScreen> {
           return null;
         }
       },
+      onSaved: (String value) {
+        print(value);
+      },
     );
   }
 
@@ -70,7 +76,9 @@ class LoginScreenState extends State<LoginScreen> {
       child: Text('Submit!'),
       onPressed: () {
         // formKey.currentState.reset();
-        print(formKey.currentState.validate());
+        if (formKey.currentState.validate()) {
+          formKey.currentState.save();
+        }
       },
     );
   }
