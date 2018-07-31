@@ -39,12 +39,20 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget passwordField() {
-    return TextField(
-      obscureText: true,
-      decoration: InputDecoration(
-        hintText: 'Passwrod',
-        labelText: 'Password',
-      ),
+    // StreamBuilder 偵測到 stream 的變化，呼叫 build func
+    return StreamBuilder(
+      stream: bloc.password,
+      builder: (context, snapshot) {
+        return TextField(
+          obscureText: true,
+          onChanged: bloc.changePassword,
+          decoration: InputDecoration(
+            hintText: 'Passwrod',
+            labelText: 'Password',
+            errorText: snapshot.error,
+          ),
+        );
+      },
     );
   }
 
