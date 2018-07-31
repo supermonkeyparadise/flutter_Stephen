@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
 import './../blocs/bloc.dart';
+import './../blocs/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of(context);
+
     return Container(
       margin: EdgeInsets.all(20.0),
       child: Column(
         children: <Widget>[
-          emailField(),
-          passwordField(),
+          emailField(bloc),
+          passwordField(bloc),
           Container(
             margin: EdgeInsets.only(top: 25.0),
           ),
@@ -20,7 +23,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget emailField() {
+  Widget emailField(Bloc bloc) {
     // when stream change, builder func will run && return widget!!
     return StreamBuilder(
       stream: bloc.email,
@@ -38,7 +41,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget passwordField() {
+  Widget passwordField(Bloc bloc) {
     // StreamBuilder 偵測到 stream 的變化，呼叫 build func
     return StreamBuilder(
       stream: bloc.password,
