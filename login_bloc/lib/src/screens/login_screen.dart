@@ -6,6 +6,7 @@ import './../blocs/provider.dart';
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('## rebuild_2!!');
     final bloc = Provider.of(context);
 
     return Container(
@@ -28,6 +29,7 @@ class LoginScreen extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.email,
       builder: (context, snapshot) {
+        print('## rebuild_email!!');
         return TextField(
           onChanged: bloc.changeEmail,
           keyboardType: TextInputType.emailAddress,
@@ -46,6 +48,7 @@ class LoginScreen extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.password,
       builder: (context, snapshot) {
+        print('## rebuild_password!!');
         return TextField(
           obscureText: true,
           onChanged: bloc.changePassword,

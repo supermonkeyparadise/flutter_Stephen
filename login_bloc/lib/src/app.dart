@@ -6,6 +6,7 @@ import './blocs/provider.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('## rebuild_1!!');
     return Provider(
       child: MaterialApp(
         title: 'Log Me In',
